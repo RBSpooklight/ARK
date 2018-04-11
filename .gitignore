@@ -99,7 +99,6 @@ Temporary Items
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
-/[Pp]lugins/
 /Assets/AssetStoreTools*
 
 # Visual Studio 2015 cache directory
@@ -132,3 +131,5 @@ sysinfo.txt
 
 
 # End of https://www.gitignore.io/api/macos,unity,jetbrains
+Assets/Plugins
+Plugins.meta
