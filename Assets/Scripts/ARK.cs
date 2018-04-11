@@ -7,8 +7,7 @@ using UnityEngine.XR.iOS;
 namespace Kouji.ARK 
 {
     public abstract class ARKInterface
-    {
-        
+    {   
         #region Enumerators
         
         /// <summary>
@@ -99,13 +98,18 @@ namespace Kouji.ARK
             protected set;
         }
         
-        //TODO: DOC
+        /// <summary>
+        /// Returns true if the current used Interface is supported on the device, false otherwise.
+        /// </summary>
         public virtual bool IsSupported
         {
             get { return true; }
         }
         
-        //TODO: DOC
+        /// <summary>
+        /// Get: Returns true if background rendering is enabled, false otherwise.
+        /// Set: Either you should render the background material or not.
+        /// </summary>
         public virtual bool IsRenderingBackground
         {
             get { return false; }
