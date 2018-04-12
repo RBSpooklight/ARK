@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.iOS;
 
 namespace Kouji.ARK 
 {
@@ -18,7 +17,8 @@ namespace Kouji.ARK
         {
             None         = 0,
             Horizontal   = 1 << 0,
-            Vertical     = 1 << 1
+            Vertical     = 1 << 1,
+            HorizontalAndVertical = (1 << 1) | (1 << 0)
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Kouji.ARK
         public virtual bool IsRenderingBackground
         {
             get { return false; }
-            set { }
+            set { throw new NotSupportedException("'IsRenderingBackground' called on ARK abstract class."); }
         }
 
         #endregion
@@ -203,6 +203,9 @@ namespace Kouji.ARK
             {
                 //TODO: SPECIFIC INTERFACES
                 
+                #if UNITY_IOS
+                    m_interface = new ARK_ARKit();
+                #endif
 //                #if UNITY_EDITOR
 //                    m_Interface = new AREditorInterface();
 //                #elif UNITY_IOS

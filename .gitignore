@@ -133,3 +133,4 @@ sysinfo.txt
 # End of https://www.gitignore.io/api/macos,unity,jetbrains
 Assets/Plugins
 Plugins.meta
+.idea
