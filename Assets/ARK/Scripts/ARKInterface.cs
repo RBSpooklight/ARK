@@ -201,7 +201,7 @@ namespace Kouji.ARK
         {
             if (m_interface == null)
             {
-                //TODO: SPECIFIC INTERFACES
+                //TODO: SPECIFIC INTERFACES, FACTORY REFACTO?
                 
                 #if UNITY_IOS
                     m_interface = new ARK_ARKit();

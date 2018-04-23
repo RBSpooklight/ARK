@@ -2,7 +2,7 @@
 
 namespace Kouji.ARK 
 {
-	public class Anchor : MonoBehaviour
+	public class Anchor : ARObject
 	{
 		[HideInInspector] public string id;
 
