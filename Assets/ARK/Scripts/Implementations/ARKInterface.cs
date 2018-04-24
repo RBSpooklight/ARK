@@ -129,6 +129,16 @@ namespace Kouji.ARK
         public abstract IEnumerator Start(Configuration _config);
         
         /// <summary>
+        /// Pauses ARK.
+        /// </summary>
+        public abstract void Pause();
+        
+        /// <summary>
+        /// Resumes ARK.
+        /// </summary>
+        public abstract void Resume();
+        
+        /// <summary>
         /// Stops ARK.
         /// </summary>
         public abstract void Stop();

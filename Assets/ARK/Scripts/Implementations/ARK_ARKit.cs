@@ -229,6 +229,16 @@ namespace Kouji.ARK
             return null;
         }
 
+        public override void Pause()
+        {
+            NativeInterface.Pause();
+        }
+
+        public override void Resume()
+        {
+            NativeInterface.RunWithConfig(m_config);
+        }
+
         public override void Stop()
         {
             var anchors = m_anchors.Values;
