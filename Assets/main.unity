@@ -284,6 +284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1324836552}
   - component: {fileID: 1324836551}
+  - component: {fileID: 1324836553}
   m_Layer: 0
   m_Name: Root
   m_TagString: Untagged
@@ -307,8 +308,6 @@ MonoBehaviour:
   m_usePointCloud: 1
   m_useLightEstimation: 1
   m_planeDetectionMode: 3
-  m_camera: {fileID: 1747545094}
-  pointOfInterest: {x: 0, y: 0, z: 0}
 --- !u!4 &1324836552
 Transform:
   m_ObjectHideFlags: 0
@@ -323,6 +322,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1324836553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1324836550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e157ac59ae2844d5fb59abb0b125e9b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_planePrefab: {fileID: 1372998203143648, guid: 6f93f4e81316b47898f6dc531ba3b110,
+    type: 2}
 --- !u!1 &1747545091
 GameObject:
   m_ObjectHideFlags: 0
