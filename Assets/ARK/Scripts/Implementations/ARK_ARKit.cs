@@ -42,7 +42,7 @@ namespace Kouji.ARK
 
         private Matrix4x4 m_displayTransform = new Matrix4x4();
         
-        private Dictionary<string, Anchor> m_anchors = new Dictionary<string, Anchor>();
+        private Dictionary<string, ARKAnchor> m_anchors = new Dictionary<string, ARKAnchor>();
 
         private Texture2D m_videoTextureY;
         private Texture2D m_videoTextureCbCr;
@@ -94,11 +94,11 @@ namespace Kouji.ARK
             return UnityARMatrixOps.GetPosition(_anchor.transform) + offset;
         }
     
-        private TrackedPlane GetTrackedPlane(ARPlaneAnchor _anchor)
+        private ARKPlane GetTrackedPlane(ARPlaneAnchor _anchor)
         {
             Debug.Assert(_anchor != null);
             
-            return new TrackedPlane()
+            return new ARKPlane()
             {
                 id = _anchor.identifier,
                 center = GetWorldPosition(_anchor),
@@ -167,7 +167,7 @@ namespace Kouji.ARK
 
         private void UpdateUserAnchor(ARUserAnchor _userAnchor)
         {
-            Anchor anchor;
+            ARKAnchor anchor;
             if (m_anchors.TryGetValue(_userAnchor.identifier, out anchor))
             {
                 anchor.transform.position = _userAnchor.transform.GetColumn(3);
@@ -413,7 +413,7 @@ namespace Kouji.ARK
             return m_displayTransform;
         }
 
-        public override void ApplyAnchor(Anchor _anchor)
+        public override void ApplyAnchor(ARKAnchor _anchor)
         {
             if (!IsRunning)
                 return;
@@ -432,7 +432,7 @@ namespace Kouji.ARK
             m_anchors[_anchor.id] = _anchor;
         }
 
-        public override void DestroyAnchor(Anchor _anchor)
+        public override void DestroyAnchor(ARKAnchor _anchor)
         {
             if (string.IsNullOrEmpty(_anchor.id)) 
                 return;

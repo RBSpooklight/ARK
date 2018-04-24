@@ -85,9 +85,9 @@ namespace Kouji.ARK
         private static ARKInterface m_interface;
 
         //Events
-        public static Action<TrackedPlane> onPlaneAdded;
-        public static Action<TrackedPlane> onPlaneUpdated;
-        public static Action<TrackedPlane> onPlaneRemoved;
+        public static Action<ARKPlane> onPlaneAdded;
+        public static Action<ARKPlane> onPlaneUpdated;
+        public static Action<ARKPlane> onPlaneRemoved;
         
         /// <summary>
         /// Returns true if ARK is started and active, false otherwise.
@@ -182,12 +182,12 @@ namespace Kouji.ARK
         /// <summary>
         /// Adds an Anchor to the world.
         /// </summary>
-        public virtual void ApplyAnchor(Anchor _anchor) {}
+        public virtual void ApplyAnchor(ARKAnchor _anchor) {}
         
         /// <summary>
         /// Destroys the specified Anchor.
         /// </summary>
-        public virtual void DestroyAnchor(Anchor _anchor) {}
+        public virtual void DestroyAnchor(ARKAnchor _anchor) {}
 
         #endregion
 
@@ -234,7 +234,7 @@ namespace Kouji.ARK
         /// <summary>
         /// Method used to do a safe call of the 'onPlaneAdded' delegate.
         /// </summary>
-        protected void OnPlaneAdded(TrackedPlane _plane)
+        protected void OnPlaneAdded(ARKPlane _plane)
         {
             if (onPlaneAdded != null)
                 onPlaneAdded(_plane);
@@ -243,7 +243,7 @@ namespace Kouji.ARK
         /// <summary>
         /// Method used to do a safe call of the 'onPlaneUpdated' delegate.
         /// </summary>
-        protected void OnPlaneUpdated(TrackedPlane _plane)
+        protected void OnPlaneUpdated(ARKPlane _plane)
         {
             if (onPlaneUpdated != null)
                 onPlaneUpdated(_plane);
@@ -252,7 +252,7 @@ namespace Kouji.ARK
         /// <summary>
         /// Method used to do a safe call of the 'onPlaneRemoved' delegate.
         /// </summary>
-        protected void OnPlaneRemoved(TrackedPlane _plane)
+        protected void OnPlaneRemoved(ARKPlane _plane)
         {
             if (onPlaneRemoved != null)
                 onPlaneRemoved(_plane);

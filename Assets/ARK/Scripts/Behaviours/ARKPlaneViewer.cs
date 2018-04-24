@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Kouji.ARK 
 {
-	public class ARKPlaneViewer : ARObject
+	public class ARKPlaneViewer : ARKObject
 	{
 		[SerializeField] private GameObject m_planePrefab;
 		
@@ -27,7 +27,7 @@ namespace Kouji.ARK
 			ARKInterface.onPlaneUpdated -= OnPlaneUpdated;
 		}
 		
-		protected virtual void CreateOrUpdatePlaneGameObject(TrackedPlane _plane)
+		protected virtual void CreateOrUpdatePlaneGameObject(ARKPlane _plane)
 		{
 			GameObject go;
 			if (!m_planes.TryGetValue(_plane.id, out go))
@@ -46,19 +46,19 @@ namespace Kouji.ARK
 			go.transform.localScale = new Vector3(_plane.extents.x, 1f, _plane.extents.y);
 		}
 		
-		protected virtual void OnPlaneAdded(TrackedPlane _plane)
+		protected virtual void OnPlaneAdded(ARKPlane _plane)
 		{
 			if (m_planePrefab)
 				CreateOrUpdatePlaneGameObject(_plane);
 		}
 
-		protected virtual void OnPlaneUpdated(TrackedPlane _plane)
+		protected virtual void OnPlaneUpdated(ARKPlane _plane)
 		{
 			if (m_planePrefab)
 				CreateOrUpdatePlaneGameObject(_plane);
 		}
 
-		protected virtual void OnPlaneRemoved(TrackedPlane _plane)
+		protected virtual void OnPlaneRemoved(ARKPlane _plane)
 		{
 			GameObject go;
 			if (m_planes.TryGetValue(_plane.id, out go))

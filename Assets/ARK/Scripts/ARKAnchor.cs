@@ -2,7 +2,7 @@
 
 namespace Kouji.ARK 
 {
-	public sealed class Anchor : ARObject
+	public sealed class ARKAnchor : ARKObject
 	{
 		[HideInInspector] public string id;
 

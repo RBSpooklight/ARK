@@ -2,7 +2,7 @@
 
 namespace Kouji.ARK
 {
-    public class ARObject : MonoBehaviour 
+    public class ARKObject : MonoBehaviour 
     {
         protected ARKController GetFirstEnabledControllerinChildren()
         {

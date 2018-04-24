@@ -2,7 +2,7 @@
 
 namespace Kouji.ARK
 {
-    public struct TrackedPlane
+    public struct ARKPlane
     {
         public string id;
 
