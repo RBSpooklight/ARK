@@ -226,7 +226,6 @@ namespace Kouji.ARK
 
         #endregion
         
-        //TODO: DOC, why do I need this method?
         public bool TryGetPose(ref Pose pose)
         {
             return TryGetUnscaledPose(ref pose);

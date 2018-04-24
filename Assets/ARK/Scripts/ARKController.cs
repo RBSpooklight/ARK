@@ -3,23 +3,23 @@ using System.Collections;
 
 namespace Kouji.ARK
 {
-	public sealed class ARKController : MonoBehaviour
+	public class ARKController : MonoBehaviour
 	{
 		#region Members
 
+		[Header("AR Settings")]
 		[SerializeField] private float m_scale = 1f;
 		[SerializeField] private bool m_isRenderingBackground = true;
 		[SerializeField] private bool m_usePointCloud = true;
 		[SerializeField] private bool m_useLightEstimation = true;
 		[SerializeField] private ARKInterface.PlaneDetectionMode m_planeDetectionMode;
 			
-		[SerializeField] private Camera m_camera;
-
+		private Quaternion m_rotation = Quaternion.identity;
 		private Quaternion m_invRotation = Quaternion.identity;
-
-		private ARKInterface m_interface;
-
-		public Vector3 pointOfInterest; //public?
+		private Vector3 pointOfInterest; //public?
+		
+		protected ARKInterface m_interface;
+		protected Camera m_camera;
 
 		public Camera Camera
 		{
@@ -38,6 +38,24 @@ namespace Kouji.ARK
 			{
 				if (m_interface != null)
 					m_interface.IsRenderingBackground = m_isRenderingBackground = value;
+			}
+		}
+
+		public Quaternion Rotation
+		{
+			get { return m_rotation; }
+			set
+			{
+				var root = m_camera.transform.parent;
+				if (root)
+				{
+					m_rotation = value;
+					m_invRotation = Quaternion.Inverse(m_rotation);
+
+					var poiInRootSpace = root.InverseTransformPoint(pointOfInterest);
+					root.localPosition = m_invRotation * (-poiInRootSpace * m_scale) + pointOfInterest;
+					root.localRotation = m_invRotation;
+				}
 			}
 		}
 
@@ -127,7 +145,7 @@ namespace Kouji.ARK
 				enabled = false;
 		}
 
-		private /*virtual*/ void SetupARInterface()
+		protected virtual void SetupARInterface()
 		{
 			m_interface = ARKInterface.GetInterface();
 		}
